@@ -8,23 +8,23 @@ class ContactController {
     this.service = new ContactService()
   }
 
-  public getContacts = async (req: Request, res: Response) => {
-    const allContacts = await this.service.getAllContacts()
+  public fetchContacts = async (req: Request, res: Response) => {
+    const allContacts = await this.service.fetchAllContacts()
     return res.status(200).json(allContacts)
   }
 
-  public createContact = async (req: Request, res: Response) => {
-    const newContact = await this.service.createContact(req.body)
+  public addContact = async (req: Request, res: Response) => {
+    const newContact = await this.service.addContact(req.body)
     return res.status(200).json(newContact)
   }
 
-  public updateContact = async (req: Request, res: Response) => {
-    const updatedContact = await this.service.updateContact(Number(req.params.id), req.body)
+  public modifyContact = async (req: Request, res: Response) => {
+    const updatedContact = await this.service.modifyContact(Number(req.params.id), req.body)
     return res.status(200).json(updatedContact)
   }
 
-  public deleteContact = async (req: Request, res: Response) => {
-    const deletedContact = await this.service.deleteContact(Number(req.params.id))
+  public removeContact = async (req: Request, res: Response) => {
+    const deletedContact = await this.service.removeContact(Number(req.params.id))
     return res.status(200).json({ msg: "deleted sussefully" })
   }
 }

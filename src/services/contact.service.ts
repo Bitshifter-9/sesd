@@ -7,23 +7,23 @@ class ContactService {
     this.repository = new ContactRepository()
   }
 
-  async createContact(reqData: any) {
-    const newContact = await this.repository.create(reqData)
+  async addContact(reqData: any) {
+    const newContact = await this.repository.add(reqData)
     return newContact
   }
 
-  async getAllContacts() {
-    const allContacts = await this.repository.findAll()
+  async fetchAllContacts() {
+    const allContacts = await this.repository.getAll()
     return allContacts
   }
 
-  async updateContact(contactId: number, reqData: any) {
-    const updatedContact = await this.repository.update(contactId, reqData)
+  async modifyContact(contactId: number, reqData: any) {
+    const updatedContact = await this.repository.modify(contactId, reqData)
     return updatedContact
   }
 
-  async deleteContact(contactId: number) {
-    const deletedContact = await this.repository.delete(contactId)
+  async removeContact(contactId: number) {
+    const deletedContact = await this.repository.remove(contactId)
     return deletedContact
   }
 }

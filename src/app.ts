@@ -9,23 +9,23 @@ class App {
   constructor(appRoutes: Routes[]) {
     this.app = express()
     this.port = process.env.PORT || 3001
-    this.initializeMiddlewares()
-    this.initializeRoutes(appRoutes)
+    this.setupMiddlewares()
+    this.configureRoutes(appRoutes)
   }
 
-  public startServer() {
+  public listen() {
     this.app.listen(this.port, () => {
       console.log("backed is started")
     })
   }
 
-  private initializeRoutes(appRoutes: Routes[]) {
+  private configureRoutes(appRoutes: Routes[]) {
     appRoutes.forEach((route) => {
       this.app.use("/", route.router)
     })
   }
 
-  private initializeMiddlewares() {
+  private setupMiddlewares() {
     this.app.use(cors())
     this.app.use(express.json())
   }

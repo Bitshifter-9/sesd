@@ -8,14 +8,14 @@ class ContactRoutes implements Routes {
   public controller = new ContactController()
 
   constructor() {
-    this.initializeRoutes()
+    this.setupRoutes()
   }
 
-  private initializeRoutes() {
-    this.router.get(`${this.path}`, this.controller.getContacts)
-    this.router.post(`${this.path}`, this.controller.createContact)
-    this.router.put(`${this.path}/:id`, this.controller.updateContact)
-    this.router.delete(`${this.path}/:id`, this.controller.deleteContact)
+  private setupRoutes() {
+    this.router.get(`${this.path}`, this.controller.fetchContacts)
+    this.router.post(`${this.path}`, this.controller.addContact)
+    this.router.put(`${this.path}/:id`, this.controller.modifyContact)
+    this.router.delete(`${this.path}/:id`, this.controller.removeContact)
   }
 }
 

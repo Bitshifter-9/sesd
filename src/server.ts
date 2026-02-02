@@ -4,4 +4,4 @@ import "dotenv/config"
 
 const server = new App([new ContactRoutes()])
 
-server.startServer()
+server.listen()
