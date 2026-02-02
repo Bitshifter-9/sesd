@@ -1,31 +1,31 @@
 import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+const db = new PrismaClient()
 
 class ContactRepository {
-  async create(data: any) {
-    const contact = await prisma.contact.create({ data })
-    return contact
+  async create(reqData: any) {
+    const newContact = await db.contact.create({ data: reqData })
+    return newContact
   }
 
   async findAll() {
-    const data = await prisma.contact.findMany({})
-    return data
+    const allContacts = await db.contact.findMany({})
+    return allContacts
   }
 
-  async update(id: number, data: any) {
-    const con = await prisma.contact.update({
-      where: { id: Number(id) },
-      data
+  async update(contactId: number, reqData: any) {
+    const updatedContact = await db.contact.update({
+      where: { id: Number(contactId) },
+      data: reqData
     })
-    return con
+    return updatedContact
   }
 
-  async delete(id: number) {
-    const con = await prisma.contact.delete({
-      where: { id: Number(id) }
+  async delete(contactId: number) {
+    const deletedContact = await db.contact.delete({
+      where: { id: Number(contactId) }
     })
-    return con
+    return deletedContact
   }
 }
 

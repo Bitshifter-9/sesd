@@ -6,11 +6,11 @@ class App {
   public app: express.Application
   public port: string | number
 
-  constructor(routes: Routes[]) {
+  constructor(appRoutes: Routes[]) {
     this.app = express()
     this.port = process.env.PORT || 3001
     this.initializeMiddlewares()
-    this.initializeRoutes(routes)
+    this.initializeRoutes(appRoutes)
   }
 
   public startServer() {
@@ -19,8 +19,8 @@ class App {
     })
   }
 
-  private initializeRoutes(routes: Routes[]) {
-    routes.forEach((route) => {
+  private initializeRoutes(appRoutes: Routes[]) {
+    appRoutes.forEach((route) => {
       this.app.use("/", route.router)
     })
   }

@@ -1,30 +1,30 @@
 import ContactRepository from "../repositories/contact.repository"
 
 class ContactService {
-  private contactRepository: ContactRepository
+  private repository: ContactRepository
 
   constructor() {
-    this.contactRepository = new ContactRepository()
+    this.repository = new ContactRepository()
   }
 
-  async createContact(data: any) {
-    const contact = await this.contactRepository.create(data)
-    return contact
+  async createContact(reqData: any) {
+    const newContact = await this.repository.create(reqData)
+    return newContact
   }
 
   async getAllContacts() {
-    const data = await this.contactRepository.findAll()
-    return data
+    const allContacts = await this.repository.findAll()
+    return allContacts
   }
 
-  async updateContact(id: number, data: any) {
-    const con = await this.contactRepository.update(id, data)
-    return con
+  async updateContact(contactId: number, reqData: any) {
+    const updatedContact = await this.repository.update(contactId, reqData)
+    return updatedContact
   }
 
-  async deleteContact(id: number) {
-    const con = await this.contactRepository.delete(id)
-    return con
+  async deleteContact(contactId: number) {
+    const deletedContact = await this.repository.delete(contactId)
+    return deletedContact
   }
 }
 
