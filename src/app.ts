@@ -15,7 +15,7 @@ class App {
 
   public startServer() {
     this.app.listen(this.port, () => {
-      console.log(`backend is started on http://localhost:${this.port}`)
+      console.log("backed is started")
     })
   }
 
